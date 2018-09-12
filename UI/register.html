@@ -5,19 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign Up</title>
 <link href="style.css" rel="stylesheet"/>
+<script src="src/js/register.js"></script>
 </head>
 <div class="container">
 	<div class="centered">
 <h1><center>StackOverflow-Lite</center></h1>
 
-  <form id="register-form"  method="POST" action="sign_in">
+  <form id="registration"  method="POST" action="login.html">
 <label>Email</label>
-<input name="email" type="email" class="input_control" placeholder="email@someone.com"/><br>
+<input name="email" type="email" class="input_control" placeholder="email@someone.com" id="email"  /><br>
+<label>Username</label>
+<input placeholder="username" name="username" class="input_control" id="username" /> <br>
 <label>Password</label>
-<input placeholder="Password" name="password" class="input_control" type="password"/> <br>
-<label>Password</label>
-<input placeholder="Confirm password" name="password_confirm" class="input_control" type="password"/><br>   
-<button type="submit" class="button">Sign up</button>
+<input placeholder="Password" name="password" class="input_control" type="password" id="password" /> <br>
+<label>Confirm Password</label>
+<input placeholder="Confirm password" name="password_confirm" class="input_control" type="password" id="confirmPassword"/><br>   
+<button id="registerBtn" type="submit" class="button">Sign up</button>
 <br/>
 <a href="login.html">I have an account</a>
 </form>
