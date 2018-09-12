@@ -1,5 +1,5 @@
 loginBtn = thisElem('loginButton')
-loginBtn.addEventListener('click', (event) => {
+loginBtn.addEventListener('submit', (event) => {
   event.preventDefault();
   login();
 });

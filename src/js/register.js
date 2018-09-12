@@ -1,6 +1,6 @@
 
 signUpBtn = thisElem("registerBtn")
-registerBtn.addEventListener('onClick', (event) => {
+registerBtn.addEventListener('submit', (event) => {
   event.preventDefault();
   registration();
 });
