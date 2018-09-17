@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
-<html>
+<meta charset="utf-8">
+<html lang="en-US">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign Up</title>
 <link href="style.css" rel="stylesheet"/>
-<script src="/src/js/register.js"></script>
 </head>
 <div class="container">
 	<div class="centered">
 <h1><center>StackOverflow-Lite</center></h1>
-
-  <form id="registration"  method="POST" action="login.html">
+<div id="message"></div>
+<form id="registration"  method="POST">
 <label>Email</label>
 <input name="email" type="email" class="input_control" placeholder="email@someone.com" id="email"  /><br>
 <label>Username</label>
@@ -20,12 +20,12 @@
 <input placeholder="Password" name="password" class="input_control" type="password" id="password" /> <br>
 <label>Confirm Password</label>
 <input placeholder="Confirm password" name="password_confirm" class="input_control" type="password" id="confirmPassword"/><br>   
-<button id="registerBtn" type="submit" class="button">Sign up</button>
+<input type="submit" value="signUp">
 <br/>
 <a href="login.html">I have an account</a>
 </form>
 </div>
 </div>
-
+<script src="js/register.js"></script>
 </body>
 </html>

@@ -22,17 +22,26 @@ function askQuiz()
     }
     )
         .then((res) => {
-            return res.status.json()
-        })
-        .then((data) => {
-            if (res.status == 201) {
-                document.getElementById('error').innerHTML = data.message
+        res.json().then((questionInfo) => {
+            console.log(questionInfo);
+            // makeElement(data.id, data.title, 'root', 'div');
+        });
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+        // .then((res) => {
+        //     return res.status.json()
+        // })
+        // .then((data) => {
+        //     if (res.status == 201) {
+        //         document.getElementById('error').innerHTML = data.message
                 
-            } else {
-                document.getElementById('error').innerHTML = data.message
-            }
-        })
-        .catch((error) => {
-            let data = JSON.parse(error)
-            console.log(data)
-        })
+        //     } else {
+        //         document.getElementById('error').innerHTML = data.message
+        //     }
+        // })
+        // .catch((error) => {
+        //     let data = JSON.parse(error)
+        //     console.log(data)
+        // })
