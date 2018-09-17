@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Questions</title>
     <link href="style.css" rel="stylesheet" />
-    <script src="/src/js/submit_question.js"></script>
 </head>
 
 <body>
@@ -29,8 +28,8 @@
                 <div class="content">
                     <form id="submitQuestion" action="questionspage.html" method="GET">
                         <label>Question</label>
-                        <textarea class="input_control" style="width: 100%" placeholder="title" id="title"></textarea>
-                        <textarea class="input_control" style="width: 100%" placeholder="Body" id="body"></textarea>
+                        <textarea id="title" class="input_control" style="width: 100%" placeholder="title" id="title"></textarea>
+                        <textarea id="body" class="input_control" style="width: 100%" placeholder="Body" id="body"></textarea>
                         <br/>
                         <button id="save" type="submit" class="button">Save Question</button>
                     </form>
@@ -38,7 +37,7 @@
 
 
             </div>
-
+    <script src="js/submit_question.js"></script>
 </body>
 
 </html>

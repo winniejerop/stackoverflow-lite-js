@@ -1,13 +1,9 @@
-submitBtn = thisElem("save")
-submitBtn.addEventListener('submit',(event)=> {
-    event.preventDefault();
-    askQuiz();
-})
-function askQuiz()
-    let question = document.getElementById("submitBtn");
+document.getElementById('submitQuestion').addEventListener('submit', askQuiz);
+function askQuiz(evt)
+{   
+    evt.preventDefault();
     let title = document.getElementById("title").value;
-    let body = document.getElementById('Body').value;
-
+    let body = document.getElementById('body').value;
     let questionInfo = JSON.stringify({
         "title": title,
         "body": body
@@ -19,29 +15,21 @@ function askQuiz()
         headers: { 'Content-Type': 'application/json',
         'Authorization':'Bearer '+ window.localStorage.getItem('auth_token')},
         body: questionInfo
-    }
-    )
-        .then((res) => {
-        res.json().then((questionInfo) => {
-            console.log(questionInfo);
-            // makeElement(data.id, data.title, 'root', 'div');
-        });
     })
-    .catch((err) => {
-        console.log(err);
-    });
-        // .then((res) => {
-        //     return res.status.json()
-        // })
-        // .then((data) => {
-        //     if (res.status == 201) {
-        //         document.getElementById('error').innerHTML = data.message
-                
-        //     } else {
-        //         document.getElementById('error').innerHTML = data.message
-        //     }
-        // })
-        // .catch((error) => {
-        //     let data = JSON.parse(error)
-        //     console.log(data)
-        // })
+    .then((response) => {
+        code = response.status
+        return response.json()
+    })
+    .then((response) => {
+        if (code == 201){
+            document.getElementById('title').innerHTML=response.title;
+            document.getElementById('body').innerHTML=response.body;
+
+        }
+        if (code == 401){
+            console.log(response.Message)
+            
+        }
+    })
+    .catch((err) => console.log('An error Occurred '+err))
+}
