@@ -11,20 +11,21 @@
 <center><h1>StackOverflow-Lite</h1>
     <h1>Login</h1></center>
   </div>
-  <p id="errorOccurred"></p>
   <div class="login-form">
-    <form id="signin" action="questionspage.html" method="GET">
-    <label>email</label>
-    <input type="email" placeholder="email@someone.com" id="email"/><br>
-    <label>Password</label>
-    <input type="password" placeholder="Password" id="password"/>
+    <form id="signin" action="recentquestions.html" method="GET">
+    <label>email</label><br>
+    <input type="email" placeholder="email" id="email" required/><br>
+    <label>Password</label><br>
+    <input type="password" placeholder="Password" id="password" required/>
     <br>
-    <button id="loginButton" type="submit" class="button">Login</button>
+    <button type="submit" class="button">Login</button>
+    <p id="errorOccurred"></p>
     </form>
     <br>
     <a href="register.html">Register</a>
     <br>
     <a href="#">Forgot Password?</a>
+</div>
 </div>
 <script src="js/login.js"></script>
 </body>

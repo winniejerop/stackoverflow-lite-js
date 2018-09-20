@@ -29,10 +29,11 @@ function login(event){
     if (data.message == 'Successfully logged in.') {
       window.localStorage.setItem('auth_token', data.auth_token)
       console.log(window.localStorage.getItem('auth_token'))
-      window.location = 'questionspage.html'
+      window.location = 'recentquestions.html'
   }
     else {
-      document.getElementById('errorOccurred').innerHTML = data.message
+      msg = "Wrong credentials, try again"
+      alert(msg);
 }
   })
   .catch((err) => {

@@ -22,13 +22,12 @@ function askQuiz(evt)
     })
     .then((response) => {
         if (code == 201){
-            document.getElementById('title').innerHTML=response.title;
-            document.getElementById('body').innerHTML=response.body;
+            document.getElementById("submitQuestion").reset();
+            alert("Question successfully submitted.")
 
         }
         if (code == 401){
-            console.log(response.Message)
-            
+            alert("A similar question has been posted")
         }
     })
     .catch((err) => console.log('An error Occurred '+err))

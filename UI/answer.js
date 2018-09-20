@@ -1,7 +1,6 @@
-
-window.addEventListener('load', fetchAllQuestions);
-function fetchAllQuestions() { 
-    fetch('http://127.0.0.1:5000/api/v1/questions', {
+window.addEventListener('load', postAnswer);
+function postAnswer() { 
+    fetch('http://127.0.0.1:5000/api/v1/questions/question_id/answers', {
         method: 'GET',
         mode:'cors',
         headers: { 'Content-Type': 'application/json',
@@ -18,7 +17,7 @@ function fetchAllQuestions() {
                 // // console.log(data.questions);
                 var all_questions=[];
                     data.forEach(question => {
-                    var my_question="<h3 onclick='showAnswers(this);' id='"+question.question_id+"' key='"+question.question_id+"'><a href='#'>"+question.title+"</a></h3>"+question.body+"<br>";
+                    var my_question="<h3><a href='answer.html'>"+question.title+"</a></h3>"+question.body+"<br>";
                     all_questions.push(my_question);
             });
             document.getElementById('all_questions').innerHTML=all_questions.join('')
@@ -32,11 +31,4 @@ function fetchAllQuestions() {
         
         
         
-}
-function showAnswers(e){
-    // alert('show answer for question'+e.id);
-   var question_id=e.id;
-   //get question
-   //get answer for the above question
-    document.getElementById('all_questions').innerHTML="question title<br> question body<br> answers"
 }

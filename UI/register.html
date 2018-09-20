@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
-<meta charset="utf-8">
-<html lang="en-US">
+<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign Up</title>
@@ -10,22 +9,22 @@
 <div class="container">
 	<div class="centered">
 <h1><center>StackOverflow-Lite</center></h1>
-<div id="message"></div>
-<form id="registration"  method="POST">
-<label>Email</label>
-<input name="email" type="email" class="input_control" placeholder="email@someone.com" id="email"  /><br>
-<label>Username</label>
-<input placeholder="username" name="username" class="input_control" id="username" /> <br>
-<label>Password</label>
-<input placeholder="Password" name="password" class="input_control" type="password" id="password" /> <br>
-<label>Confirm Password</label>
-<input placeholder="Confirm password" name="password_confirm" class="input_control" type="password" id="confirmPassword"/><br>   
-<input type="submit" value="signUp">
+  <form id="registration" method="POST" action="sign_in">
+<label style="margin-left:25%">Email</label>
+<input name="email" type="email" class="input_control" placeholder="email@someone.com" id="email" required/><br>
+<label style="margin-left:25%">Username</label>
+<input name="username" class="input_control" placeholder="username" id="username" required/><br>
+<label style="margin-left:25%">Password</label>
+<input placeholder="Password" name="password" class="input_control" type="password" id="password" required/> <br>
+<label style="margin-left:25%">Password</label>
+<input placeholder="Confirm password" name="password_confirm" class="input_control" type="password" id="confirmPassword" required/><br>   
+<button style="margin-left:25%" type="submit" class="button">Sign up</button>
 <br/>
-<a href="login.html">I have an account</a>
+<a style="margin-left:25%" href="login.html">I have an account</a>
 </form>
 </div>
 </div>
 <script src="js/register.js"></script>
+<script src="js/validation.js"></script>
 </body>
 </html>

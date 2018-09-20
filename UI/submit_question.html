@@ -11,8 +11,7 @@
 
     <div class="container">
          <div class="topnav">
-            <a href="questionspage.html">StackOverflow-Lite</a> 
-            <a href="recentquestions.html">Recent Questions</a>               
+            <a href="recentquestions.html">StackOverflow-Lite</a>               
             <a href="all_questions.html">All Questions</a>
             <a class="active" href="submit_question.html">Submit Question</a>  
             <a href="profile.html">Profile</a>
@@ -24,20 +23,22 @@
 
 
             <div class="full_12">
-                <h3>Submit question</h3>
+                <center><h4> Submit your question below </h4></center>
                 <div class="content">
-                    <form id="submitQuestion" action="questionspage.html" method="GET">
-                        <label>Question</label>
-                        <textarea id="title" class="input_control" style="width: 100%" placeholder="title" id="title"></textarea>
-                        <textarea id="body" class="input_control" style="width: 100%" placeholder="Body" id="body"></textarea>
+                    <form id="submitQuestion" action="recentquestions.html" method="GET">
+                        <label style="margin-left:25%">Title</label>
+                        <textarea id="title" class="input_control" style="width: 50%" placeholder="Title" required></textarea>
                         <br/>
-                        <button id="save" type="submit" class="button">Save Question</button>
+                        <label style="margin-left:25%">Question</label>
+                        <textarea id="body" class="input_control" style="width: 50%" placeholder="Question" required></textarea>
+                        <br/>
+                        <button style="margin-left:25%" class="button">Submit Question</button>
                     </form>
                 </div>
 
 
             </div>
-    <script src="js/submit_question.js"></script>
+<script src="js/submit_question.js"></script>
 </body>
 
 </html>
