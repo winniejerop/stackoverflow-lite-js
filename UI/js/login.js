@@ -32,8 +32,7 @@ function login(event){
       window.location = 'recentquestions.html'
   }
     else {
-      msg = "Wrong credentials, try again"
-      alert(msg);
+      document.getElementById("error").innerHTML = "Wrong credentials please try again";
 }
   })
   .catch((err) => {

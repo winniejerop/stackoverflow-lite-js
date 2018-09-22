@@ -8,18 +8,25 @@
 <body>
 <div class="container">
     <div class="topnav">
-        <a href="questionspage.html">StackOverflow-Lite</a>
-        <a href="recentquestions.html">Recent Questions</a>
-        <a class="active" href="single_question.html">Single Question</a>
+        <a href="recentquestions.html">StackOverflow-Lite</a>
         <a href="all_questions.html">All Questions</a>
+        <a class="active" href="single_question.html">Single Question</a>
         <a href="submit_question.html">Submit Question</a>  
         <a href="profile.html">Profile</a>
         <a href="login.html" style="float: right">Logout</a>
     </div>
 
  <div class="content">
-  <h2 id="question">Question</h2>
-  <h3 id="allQuestions"></h3> 
+  <h3 id="singleQuestion"></h3> 
+<form id="fetchQuestion" method="GET">
+    <label style="margin-left:25%">QuestionID</label>
+    <textarea id="questionId" class="input_control" style="width: 50%" placeholder="QuestionID" required></textarea>
+    <br/>
+    <button style="margin-left:25%" class="button" onclick="askQuiz(this)">Fetch Question</button>
+</form>
+
+</body>
+</html>
 </div>
 
 <script src="js/single_question.js"></script>

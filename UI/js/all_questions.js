@@ -13,9 +13,8 @@ function fetchAllQuestions() {
           })
           .then((data) => {
               if (http_code == 200) {
-                let  parentElement = document.getElementById('allQuestions');
+                // let  parentElement = document.getElementById('allQuestions');
                  var data =data.results;
-                // // console.log(data.questions);
                 var all_questions=[];
                     data.forEach(question => {
                     var my_question="<h3 onclick='showAnswers(this);' id='"+question.question_id+"' key='"+question.question_id+"'><a href='#'>"+question.title+"</a></h3>"+question.body+"<br>";

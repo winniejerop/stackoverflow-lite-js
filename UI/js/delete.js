@@ -1,5 +1,4 @@
-
-
+window.addEventListener('load', deleteQuestion);
 function deleteQuestion(question_id) { 
 
     fetch('http://127.0.0.1:5000/api/v1/question/'+ question_id, {

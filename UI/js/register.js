@@ -30,11 +30,11 @@ function registration(evt)
                     if (status_code == 201){
                         window.location = 'login.html';
                     }
-                    if (status_code == 400){
-                        console.log("here here");
+                    if (status_code == 401){
+                        document.getElementById("error").innerHTML = "User already exists please login";
                     }
                     console.log(response.Message)
                 })
                 .catch((err) => console.log('There is an error ', err))
-                 
+             
         }
