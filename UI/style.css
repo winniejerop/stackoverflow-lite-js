@@ -7,17 +7,18 @@ body {
     margin:0px;
     margin-top: 5px;
     background: #648880;
-    background: radial-gradient(#AAABBB, #2E9CCA);
-    background-size: 100% 110%;
-
+    background: radial-gradient(#AAABBB, rgb(71, 116, 184));
+    background-size: 100% 110%;  
+    font-family: 'Open Sans', sans-serif;
 }
+
 .container {
     padding-right: 55px;
     padding-left: 55px;
     margin-right: auto;
     margin-left: auto;
     font-size: 1.2em;
-    color: #000;
+    color: rgb(8, 8, 8);
 }
 .topnav {
   background-color: #333;
@@ -29,7 +30,7 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
 }
 .topnav a:hover {
   background-color: #ddd;
@@ -39,6 +40,35 @@ body {
 .topnav a.active{
   background-color: #f124a3;
   color: white;
+}
+#search-form_3 {
+  background: #e1e1e1; /* Fallback color for non-css3 browsers */
+  width: 365px;
+  margin: 7px;
+  float: right;
+  
+  /* Gradients */
+  background: -webkit-gradient( linear,left top, left bottom, color-stop(0, rgb(243,243,243)), color-stop(1, rgb(225,225,225)));
+  background: -moz-linear-gradient( center top, rgb(243,243,243) 0%, rgb(225,225,225) 100%);
+  
+  /* Shadows */
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3), 0 0 2px rgba(0,0,0,.3);
+  -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3), 0 0 2px rgba(0,0,0,.3);
+  -moz-box-shadow: 1px 1px 2px rgba(0,0,0,.3), 0 0 2px rgba(0,0,0,.3);
+  }
+  .search_3{
+  background: #fafafa; /* Fallback color for non-css3 browsers */
+  
+  /* Gradients */
+  background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(250,250,250)), color-stop(1, rgb(230,230,230)));
+  background: -moz-linear-gradient( center top, rgb(250,250,250) 0%, rgb(230,230,230) 100%);
+  border: 0;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid rgba(255,255,255,.8);
+  font-size: 16px;
+  margin: 4px;
+  padding: 5px;
+  width: 250px;
 }
   .index{
     margin-top: 50px;
@@ -50,11 +80,6 @@ body {
     font-size: 1.2em;
   
 }
-.login-form {
- /* border:.5px solid #fff;
-  border-radius:10px;
-  box-shadow:0px 0px 10px #000;*/
-}
 .login-form h3 {
   text-align:left;
   margin-left:40px;
@@ -64,7 +89,7 @@ body {
   box-sizing:border-box;
   padding-top:15px;
   padding-bottom:10%;
-  margin:5% auto;
+  margin:auto;
   text-align:center;
 }
 

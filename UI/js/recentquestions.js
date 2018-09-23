@@ -15,29 +15,22 @@ function fetchAllQuestions() {
               if (http_code == 200) {
                 // let  parentElement = document.getElementById('allQuestions');
                  var data =data.results;
-                // var all_questions=[];
-                //     data.forEach(question => {
-                //     var my_question="<h3 onclick='showAnswers(this);' id='"+question.question_id+"' key='"+question.question_id+"'><a href='#'>"+question.title+"</a></h3>"+question.body+"<br>";
-                //     all_questions.push(my_question);
+           
+                data.sort(function(a,b) {
+                    return b.question_id-a.question_id;
+                });
+                
+                
+                console.log(data);
+
                     var questId =[];
                     data.forEach(question =>{
-                        var ids="question id: "+question.question_id+" '' "+question.title+" <br> '' "+question.body+"<br>";
-                        questId.push(ids);
+                        var info="<h4 onclick='showAnswers(this);' Question ID: '"+question.question_id+"'><a href='#'>"+question.title+"</a></h4>"+question.body+"<br>\n";
+                        questId.push(info);
                         
                     })
             };
                     document.getElementById('recent_questions').innerHTML=questId.join('')
             },
-        
-        //   .catch((err) => console.log("An error Occurred "+err))
-        
-        
-
-// function showAnswers(e){
-//     // alert('show answer for question'+e.id);
-//    var question_id=e.id;
-//    //get question
-//    //get answer for the above question
-//     document.getElementById('all_questions').innerHTML="question title<br> question body<br> answers"
-// })
+    
         )}

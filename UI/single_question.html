@@ -19,10 +19,13 @@
  <div class="content">
   <h3 id="singleQuestion"></h3> 
 <form id="fetchQuestion" method="GET">
-    <label style="margin-left:25%">QuestionID</label>
-    <textarea id="questionId" class="input_control" style="width: 50%" placeholder="QuestionID" required></textarea>
-    <br/>
-    <button style="margin-left:25%" class="button" onclick="askQuiz(this)">Fetch Question</button>
+        <div class="container">
+            <div class="navbar">
+                <div class="search">
+                   <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                   <button type="submit" class="searchButton"></button>
+                </div>
+            </div>
 </form>
 
 </body>

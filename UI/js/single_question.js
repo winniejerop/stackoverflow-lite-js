@@ -13,7 +13,8 @@ function askQuiz()
     console.log(questionID)
     .then((resp)=>{
         http_code =resp.status
-        return resp.json();
+        // return resp.json();
+        console.log(resp);
     })
     .then((resp) => {
        if (http_code == 200) {
@@ -23,7 +24,7 @@ function askQuiz()
                var my_question= "<h3 onclick='showAnswers(this);' id='"+question.question_id+"' key='"+question.question_id+"'><a href='#'>"+question.title+"</a></h3>"+question.body+"<br>";
                question.push(my_question);
            });
-           ddocument.getElementById('singleQuestion').innerHTML=all_questions.join('')
+           document.getElementById('singleQuestion').innerHTML=all_questions.join('')
        } 
     })
 }
