@@ -1,4 +1,3 @@
-
 window.addEventListener('load', fetchAllQuestions);
 function fetchAllQuestions() { 
     fetch('http://127.0.0.1:5000/api/v1/questions', {
@@ -13,24 +12,22 @@ function fetchAllQuestions() {
           })
           .then((data) => {
               if (http_code == 200) {
-                // let  parentElement = document.getElementById('allQuestions');
                  var data =data.results;
-           
                 data.sort(function(a,b) {
                     return b.question_id-a.question_id;
                 });
-                
-                
-                console.log(data);
-
                     var questId =[];
                     data.forEach(question =>{
-                        var info="<h4 onclick='showAnswers(this);' Question ID: '"+question.question_id+"'><a href='#'>"+question.title+"</a></h4>"+question.body+"<br>\n";
+                        var info="<h4 onclick='showAnswers(this);'"
+                        // +"<a href='#'>"+question.title+"</a></h4>"
+                        +"Question ID:"+question.question_id+"'><a href='#'>"
+                        +question.title+"</a></h4>"+question.body+"<br>\n";
                         questId.push(info);
-                        
                     })
             };
                     document.getElementById('recent_questions').innerHTML=questId.join('')
             },
     
         )}
+
+    

@@ -24,6 +24,7 @@ function askQuiz(evt)
         if (code == 201){
             document.getElementById("submitQuestion").reset();
             alert("Question successfully submitted.")
+            return response.json();
 
         }
         if (code == 401){

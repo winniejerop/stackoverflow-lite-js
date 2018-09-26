@@ -13,11 +13,17 @@ function fetchAllQuestions() {
           })
           .then((data) => {
               if (http_code == 200) {
-                // let  parentElement = document.getElementById('allQuestions');
                  var data =data.results;
-                var all_questions=[];
+                 var all_questions=[];
                     data.forEach(question => {
-                    var my_question="<h4 onclick='showAnswers(this);' id='"+question.question_id+"' key='"+question.question_id+"'><a href='#'>"+question.title+"</a></h4>"+question.body+"<br>";
+                    var my_question="<h4 onclick='showAnswers(this);'"
+                    +"id='"+question.question_id+"' key='"+question.question_id+"'>"
+                    +"<a href='#'>"+question.title+"</a></h4>"
+                    +"<p>"+question.body+"</p>"
+                    +"<span class='button' id='"+question.question_id+"'"
+                    +"onclick='showAnswers(this);'><button>View Answers >></button> </span>"
+                    +"<span class='button' id='"+question.question_id+"'"
+                    +"onclick='deleteQuestion(this);'><button>Delete</button></span><hr>";
                     all_questions.push(my_question);
             });
             document.getElementById('all_questions').innerHTML=all_questions.join('')
@@ -27,16 +33,41 @@ function fetchAllQuestions() {
             }
         
         })
-        .catch((err) => console.log("An error Occurred "+err))
-        
-        
-        
+        .catch((err) => console.log("An error Occurred "+err))  
 }
+
+//Delete Question
+function deleteQuestion(e){
+    return new Promise((resolve, reject) => {
+    var question_id=e.id;
+    fetch('http://127.0.0.1:5000/api/v1/questions/'+question_id,{
+        method: 'DELETE',
+        mode:'cors',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization':'Bearer '+ window.localStorage.getItem('auth_token')},
+    })
+    .then(data => {
+        return data.json();
+    })
+    .then(data => {
+        if (data.status == 200){
+            var currentUser = users.username;
+            var  user= users.user_id;
+            if(currentUser == user){
+                resolve(data);
+            }
+            else{
+                alert("Unauthorized, You cannot delete this question!");
+            }  
+        } 
+    })
+    .catch(err => reject(err));
+});
+    }
+
+//show answer
 function showAnswers(e){
-    // alert('show answer for question'+e.id);
    var question_id=e.id;
-   //get question
-//  document.getElementsByTagName('h3').style='display:hidden';
    fetch('http://127.0.0.1:5000/api/v1/questions/'+question_id, {
        method: 'GET',
        mode:'cors',
@@ -47,25 +78,26 @@ function showAnswers(e){
    .then((resp)=>{
        http_code =resp.status
        return resp.json();
-    //    console.log(resp.json());
    })
    .then((resp) => {
       if (http_code == 200) {
           resp=resp.results
           var question = resp.question;
           var answers = resp.answers;
-
           var question=question[0];
-    document.getElementById('all_questions').innerHTML="<h3>"+question.title+"</h3><br>"+question.body
-    +"<br><h4>Answers</h4><br><span id='answers'></span>";
+      document.getElementById('all_questions').innerHTML="<h3>"+question.title+"</h3>"
+      +"<p>"+question.body+"</p>"
+      +"Post on: "+question.created_at
+      +"<h4>Answers ("+answers.length+")</h4>"
+      +"<span id='answers'></span>";
 
     displayAnswer(answers);
 
     displayTextArea(question.question_id);
       } 
    });
-   //get answer for the above question
 }
+//show answer
 function displayAnswer(answers) {
     var rows=[];
     answers.forEach(answer => {
@@ -76,44 +108,38 @@ function displayAnswer(answers) {
    document.getElementById('answers').innerHTML=rows.join('');
 
 }
-//post answer
+//post answer textarea
 function displayTextArea(question_id){
-
-        var html="<br/><h4>Add Answer</h4>"
-        +"<form id='postAnswer' method='POST'>"
-        +"<textarea id='answerBody'class='input_control' placeholder='Answer' required></textarea>"
+        var html="<br/><h4>Answer this question</h4>"
+        +"<textarea id='answerBody' placeholder='Add Answer' required= true;></textarea>"
         +"<br>"
         +"<button class='button' id='"+question_id+"' onclick='addAnswer(this)'>Post Answer</button>"
-        +"</form>";
+        +"";
         document.getElementById('textarea_display').innerHTML=html;
 }
+//post answer
 function addAnswer(e){
-    console.log(e.id);
+    return new Promise((resolve, reject) => {
     let answer_body = document.getElementById("answerBody").value;
-    console.log(answer_body);
-    let answer = JSON.stringify({
-        "answerBody": answer_body})
-
-    fetch('http://127.0.0.1:5000/api/v1/questions/'+e.id+'/answers', {
-       method: 'POST',
-       mode:'cors',
-       headers: { 'Content-Type': 'application/json',
-       'Authorization':'Bearer '+ window.localStorage.getItem('auth_token')},
-       body: answer 
-      
-   })
-   .then((resp)=>{
-       http_code =resp.status
-       return resp.json();
-    //    console.log(resp);
-   })
-   .then((resp) => {
-    if (http_code == 200){
-        document.getElementById("postAnswer").reset();
-        document.write("Answer successfully posted.");
-        
-
-}
-})
-.catch((err) => console.log('An error Occurred '+err))
+    var id=e.id;
+    var data = JSON.stringify({
+      "answer_body": answer_body
+  });
+  fetch("http://127.0.0.1:5000/api/v1/questions/"+id+"/answers",{
+        method: 'POST',
+        mode:'cors',
+        body: data,
+        headers: { 'Content-Type': 'application/json',
+        'Authorization':'Bearer '+ window.localStorage.getItem('auth_token')},
+    })
+    .then(data => {
+        return data.json();
+    })
+    .then(data => {
+        resolve(data);
+    })
+    .catch(err => reject(err));
+    showAnswers({id:id});
+    window.location.reload
+});
 }
