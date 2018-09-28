@@ -12,8 +12,11 @@ function fetchAllQuestions() {
               return resp.json()
           })
           .then((data) => {
-              if (http_code == 200) {
-                 var data =data.results;
+            if (http_code == 200) {
+                var data =data.results;
+               data.sort(function(a,b) {
+                   return b.question_id-a.question_id;
+               });
                  var all_questions=[];
                     data.forEach(question => {
                     var my_question="<h4 onclick='showAnswers(this);'"
@@ -97,20 +100,23 @@ function showAnswers(e){
       } 
    });
 }
-//show answer
+
+//Display the answer after it has been posted
 function displayAnswer(answers) {
     var rows=[];
     answers.forEach(answer => {
-       var my_answer= "postedBy: "+answer.user_id+"<br><p>"+answer.answer_body+"</p><hr/><br>";
+       var my_answer= "postedBy: "+answer.user_id+"<br><p>"+answer.answer_body+"</p><br>"
+       +"<span id='actions_"+answer.answer_id+"'></span><br/><hr/>";
        rows.push(my_answer);
+       
    });
     rows.push("<span id='textarea_display'></span>");
    document.getElementById('answers').innerHTML=rows.join('');
-
+showAnswerActions(answers);
 }
 //post answer textarea
 function displayTextArea(question_id){
-        var html="<br/><h4>Answer this question</h4>"
+        var html=""
         +"<textarea id='answerBody' placeholder='Add Answer' required= true;></textarea>"
         +"<br>"
         +"<button class='button' id='"+question_id+"' onclick='addAnswer(this)'>Post Answer</button>"
@@ -141,5 +147,24 @@ function addAnswer(e){
     .catch(err => reject(err));
     showAnswers({id:id});
     window.location.reload
+    
+
 });
 }
+//displays the edit and mark as preferred actions on an answer
+ function showAnswerActions(answers){
+    answers.forEach(function(answer){
+    
+        var id= 'actions_'+answer.answer_id;
+        answer_body=answer.answer_body;
+        document.getElementById(id).innerHTML="<button id="
+        +answer.answer_id+"' onClick='showEditAnswer(this,"
+        +answer_body.toString()+")'>Edit</button> <button>Mark Preferred</button>";
+
+    });
+ }
+
+
+ function showEditAnswer(e,answer_body){
+     alert(answer_body);
+ }
